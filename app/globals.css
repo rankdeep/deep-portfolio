@@ -2057,6 +2057,10 @@ body::before {
   .snek-svg { display: none; }
 }
 @media (max-width: 768px) {
+  /* The fixed 3D masked grid can exhaust Safari's GPU compositor on iPhone. */
+  .grid3d {
+    display: none;
+  }
   .section {
     padding: 60px 0;
   }

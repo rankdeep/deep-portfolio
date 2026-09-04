@@ -103,18 +103,26 @@ function Slider({ slides }: { slides: typeof projects }) {
     slidesRef.current = Array.from(scene.querySelectorAll<HTMLElement>('.cs-slide'))
     currentRef.current = 0
     requestAnimationFrame(() => render(false))
-    startAuto()
+
+    // Avoid continuously compositing every slide on touch devices. This keeps
+    // Safari's memory use low while preserving swipe and button navigation.
+    const canAutoPlay = !window.matchMedia(
+      '(max-width: 767px), (prefers-reduced-motion: reduce)'
+    ).matches
+    if (canAutoPlay) startAuto()
 
     const onResize = () => render(false)
     window.addEventListener('resize', onResize)
 
     // Swipe
     let tx0 = 0
-    scene.addEventListener('touchstart', (e) => { tx0 = e.touches[0].clientX }, { passive:true })
-    scene.addEventListener('touchend',   (e) => {
+    const onTouchStart = (e: TouchEvent) => { tx0 = e.touches[0].clientX }
+    const onTouchEnd = (e: TouchEvent) => {
       const dx = e.changedTouches[0].clientX - tx0
       if (Math.abs(dx) > 48) goTo(currentRef.current + (dx < 0 ? 1 : -1))
-    }, { passive:true })
+    }
+    scene.addEventListener('touchstart', onTouchStart, { passive:true })
+    scene.addEventListener('touchend', onTouchEnd, { passive:true })
 
     // Keyboard
     const onKey = (e: KeyboardEvent) => {
@@ -123,13 +131,21 @@ function Slider({ slides }: { slides: typeof projects }) {
     }
     document.addEventListener('keydown', onKey)
 
-    scene.addEventListener('mouseenter', stopAuto)
-    scene.addEventListener('mouseleave', startAuto)
+    if (canAutoPlay) {
+      scene.addEventListener('mouseenter', stopAuto)
+      scene.addEventListener('mouseleave', startAuto)
+    }
 
     return () => {
       stopAuto()
       window.removeEventListener('resize', onResize)
       document.removeEventListener('keydown', onKey)
+      scene.removeEventListener('touchstart', onTouchStart)
+      scene.removeEventListener('touchend', onTouchEnd)
+      if (canAutoPlay) {
+        scene.removeEventListener('mouseenter', stopAuto)
+        scene.removeEventListener('mouseleave', startAuto)
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [total])
