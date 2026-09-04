@@ -26,8 +26,7 @@ export function Hero() {
             </div>
             <div className="hero__stats">
               {[
-                { num: '4', plus: true,  label: 'Years Exp.' },
-                { num: '4', plus: false, label: 'Companies'  },
+                { num: '4', plus: true,  label: 'Years Experience' },
                 { num: '10', plus: true,  label: 'Tech Skills' },
               ].map(s => (
                 <div className="stat" key={s.label}>
