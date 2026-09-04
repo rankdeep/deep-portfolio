@@ -24,11 +24,11 @@ const rajdhani = Rajdhani({
 })
 
 export const metadata: Metadata = {
-  title: 'Deep Rank — WordPress Developer',
-  description: 'WordPress Developer with 4+ years building scalable production platforms — custom themes, plugins, WooCommerce & performance.',
+  title: 'Deep Rank - Software Engineer | Building Scalable & Reliable Solutions',
+  description: 'Software Engineer with 4+ years of experience building and maintaining scalable WordPress & Webflow based web platforms with end-to-end ownership',
   openGraph: {
-    title: 'Deep Rank — WordPress Developer',
-    description: '4+ years building scalable production WordPress platforms.',
+    title: 'Deep Rank - Software Engineer',
+    description: '4+ years of experience building scalable web platforms',
     type: 'website',
   },
 }
