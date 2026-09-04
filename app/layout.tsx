@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Orbitron, Exo_2, Rajdhani } from 'next/font/google'
 import './globals.css'
 import { Providers } from '@/components/Providers'
+import { Analytics } from '@vercel/analytics/next'
 
 const orbitron = Orbitron({
   subsets: ['latin'],
@@ -53,6 +54,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body className={`${orbitron.variable} ${exo2.variable} ${rajdhani.variable}`}>
         <Providers>{children}</Providers>
+        <Analytics />
       </body>
     </html>
   )
