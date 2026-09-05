@@ -23,6 +23,18 @@
   --blur2:blur(44px) saturate(185%);
 }
 
+/* Lenis preserves native scrolling while smoothing desktop wheel input. */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: clip;
+}
+
 /* ══ MIDNIGHT OCEAN dark (default) ══ */
 :root, html.ocean.dark {
   --bg: #050a1e;
