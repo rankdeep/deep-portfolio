@@ -1356,7 +1356,7 @@ body::before {
    CASE STUDY CARDS
 ══════════════════════════════════════════════ */
 .case-study-card {
-  background: var(--gl);
+  background: var(--gl-s);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
   border: 1px solid var(--bd);
