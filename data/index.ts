@@ -142,7 +142,7 @@ export const skills = [
   { title: 'SEO & Analytics', desc: 'Search optimization and reporting for better visibility and growth.', tools: 'Yoast SEO, Rank Math SEO, Google Search Console, Google Analytics 4, PageSpeed Insights' },
   { title: 'Optimization & Security', desc: 'Load speed and Core Web Vitals performance optimization for production sites.', tools: 'WP Rocket, LiteSpeed Cache, All-in-one Migration, Jetpack, Wordfence' },
   { title: 'AI Tools', desc: 'AI-assisted debugging, drafting, and faster implementation workflow.', tools: 'Codex, Claude, ChatGPT, Gemini' },
-  { title: 'Server & Hosting', desc: 'Domain, hosting and deployment operations for live websites.', tools: 'GoDaddy, Cloudflare, Bluehost, FTP, cPanel' },
+  { title: 'Server & Hosting', desc: 'Domain, hosting and deployment operations for live websites.', tools: 'GoDaddy, Cloudflare, Bluehost, FTP, cPanel, WPEngine'},
 ]
 
 // ─── Experience ───────────────────────────────────────────────────────────────
