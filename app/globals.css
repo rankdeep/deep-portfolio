@@ -1259,14 +1259,55 @@ body::before {
   font-weight: 700;
   color: var(--p1);
   line-height: 1;
+  display: inline-flex;
+  align-items: center;
 }
-.stat__num span {
+.stat__plus,
+.stat__num span.stat__plus {
   background: var(--prism);
   background-size: 200% 100%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   animation: prism 6s linear infinite;
+  display: inline-block;
+  margin-left: 2px;
+}
+.roll-counter {
+  display: inline-flex;
+  align-items: center;
+}
+.roll-counter__digits {
+  display: inline-flex;
+  align-items: center;
+  height: 1.12em;
+  overflow: hidden;
+}
+.roll-counter__col {
+  display: inline-block;
+  height: 1.12em;
+  line-height: 1.12em;
+  position: relative;
+  width: 0.72em;
+  overflow: hidden;
+  text-align: center;
+}
+.roll-counter__track {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  will-change: transform;
+}
+.roll-counter__digit {
+  height: 1.12em;
+  line-height: 1.12em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--p1);
 }
 .stat__label {
   font-family: var(--fm);

@@ -1,5 +1,52 @@
+'use client'
+import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import { stackTags } from '@/data'
+
+function RollCounter({ value, plus }: { value: number; plus?: boolean }) {
+  const [started, setStarted] = useState(false)
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setStarted(true)
+    }, 350)
+    return () => clearTimeout(timer)
+  }, [])
+
+  const digits = String(value).split('')
+  const reelItems = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+  return (
+    <div className="stat__num roll-counter" aria-label={`${value}${plus ? '+' : ''}`}>
+      <span className="roll-counter__digits">
+        {digits.map((digit, i) => {
+          const target = Number(digit)
+          const targetIndex = 10 + target
+          const offsetPercent = (targetIndex / reelItems.length) * 100
+
+          return (
+            <span key={i} className="roll-counter__col">
+              <span
+                className="roll-counter__track"
+                style={{
+                  transform: started ? `translateY(-${offsetPercent}%)` : 'translateY(0%)',
+                  transition: `transform ${1.3 + i * 0.25}s cubic-bezier(0.16, 1, 0.3, 1)`,
+                }}
+              >
+                {reelItems.map((n, idx) => (
+                  <span key={idx} className="roll-counter__digit">
+                    {n}
+                  </span>
+                ))}
+              </span>
+            </span>
+          )
+        })}
+      </span>
+      {plus && <span className="stat__plus">+</span>}
+    </div>
+  )
+}
 
 export function Hero() {
   return (
@@ -25,15 +72,14 @@ export function Hero() {
               <a href="mailto:rankdeep@gmail.com" className="btn btn--glass">Get in Touch</a>
             </div>
             <div className="hero__stats">
-              {[
-                { num: '4', plus: true,  label: 'Years Experience' },
-                { num: '12', plus: true,  label: 'Tech Skills' },
-              ].map(s => (
-                <div className="stat" key={s.label}>
-                  <div className="stat__num">{s.num}{s.plus && <span>+</span>}</div>
-                  <div className="stat__label">{s.label}</div>
-                </div>
-              ))}
+              <div className="stat">
+                <RollCounter value={4} plus={true} />
+                <div className="stat__label">Years Experience</div>
+              </div>
+              <div className="stat">
+                <RollCounter value={12} plus={true} />
+                <div className="stat__label">Tech Skills</div>
+              </div>
             </div>
           </div>
 
