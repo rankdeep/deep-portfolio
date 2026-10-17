@@ -8,10 +8,10 @@ export function About() {
           <div className="reveal" style={{ position:'relative', paddingBottom:40 }}>
             <div className="about-photo">
               <Image
-                src="/3d-character.webp"
-                alt="Deep Rank working as a software engineer"
-                width={400}
-                height={530}
+                src="/about-character.webp"
+                alt="Deep Rank working as a software engineer with AI assistance"
+                width={500}
+                height={500}
                 className="about-photo__image"
               />
             </div>
