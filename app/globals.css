@@ -19,8 +19,8 @@
   --t2:.32s var(--ease-out);
   --t3:.52s var(--ease-out);
   --ts:.42s var(--ease-spring);
-  --blur1:blur(22px) saturate(160%);
-  --blur2:blur(44px) saturate(185%);
+  --blur1:blur(28px) saturate(180%) brightness(104%);
+  --blur2:blur(48px) saturate(200%) brightness(106%);
 }
 
 /* Lenis preserves native scrolling while smoothing desktop wheel input. */
@@ -531,14 +531,15 @@ body::before {
    GLASS
 ══════════════════════════════════════════════ */
 .glass {
-  background: var(--gl);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.015) 55%, rgba(0, 0, 0, 0.08) 100%), var(--gl);
   backdrop-filter: var(--blur1);
   -webkit-backdrop-filter: var(--blur1);
   border: 1px solid var(--bd);
   box-shadow: var(--shd), var(--ins);
+  transition: border-color var(--t2), box-shadow var(--t2), transform var(--t2);
 }
 .glass--strong {
-  background: var(--gl-s);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.02) 55%, rgba(0, 0, 0, 0.14) 100%), var(--gl-s);
   backdrop-filter: var(--blur2);
   -webkit-backdrop-filter: var(--blur2);
 }
@@ -1026,12 +1027,12 @@ body::before {
 .nav-glass-pill {
   position: absolute;
   inset: 0;
-  background: var(--gl);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.02) 100%), var(--gl);
+  backdrop-filter: var(--blur1);
+  -webkit-backdrop-filter: var(--blur1);
   border: 1px solid var(--bd);
   border-radius: var(--rp);
-  box-shadow: var(--shd), var(--ins);
+  box-shadow: var(--shd), var(--ins), 0 0 24px var(--A-g);
   pointer-events: none;
 }
 .nav-menu {
@@ -1203,9 +1204,9 @@ body::before {
   animation: revealUp 0.9s 0.2s var(--ease-spring) both;
 }
 .hero__glass-card {
-  background: var(--gl);
-  backdrop-filter: blur(32px);
-  -webkit-backdrop-filter: blur(32px);
+  background: radial-gradient(circle at 18% 12%, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.02) 50%, transparent 80%), var(--gl);
+  backdrop-filter: var(--blur2);
+  -webkit-backdrop-filter: var(--blur2);
   border: 1px solid var(--bd);
   border-radius: var(--r4);
   padding: 36px;
@@ -1217,6 +1218,7 @@ body::before {
 .hero__glass-card:hover {
   transform: translateY(-8px) rotate(-0.4deg);
   border-color: var(--bd-g);
+  box-shadow: var(--shd-l), inset 0 2px 2px 0 rgba(255, 255, 255, 0.45), 0 0 36px var(--A-g);
 }
 .hero__card-avatar {
   width: 54px;
@@ -1356,9 +1358,9 @@ body::before {
    CASE STUDY CARDS
 ══════════════════════════════════════════════ */
 .case-study-card {
-  background: var(--gl-s);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.015) 50%, rgba(0, 0, 0, 0.15) 100%), var(--gl-s);
+  backdrop-filter: var(--blur1);
+  -webkit-backdrop-filter: var(--blur1);
   border: 1px solid var(--bd);
   border-radius: var(--r3);
   overflow: hidden;
@@ -1382,7 +1384,7 @@ body::before {
 .case-study-card:hover {
   transform: translateY(-10px);
   border-color: var(--bd-g);
-  box-shadow: var(--shd-l), var(--ins);
+  box-shadow: var(--shd-l), inset 0 1.5px 1.5px 0 rgba(255, 255, 255, 0.4), 0 0 32px var(--A-g);
 }
 .case-study-card:hover::after {
   opacity: 1;
@@ -2408,30 +2410,67 @@ body::before {
 .cs-slide[data-active="true"] {
   box-shadow: var(--shd-l), 0 0 48px var(--A-g), var(--ins) !important;
 }
-/* Dots */
+/* Dots: Modern Glassmorphic Pill Dock & Morphing Indicators */
 .cs-dots {
   display: flex;
+  align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 8px;
   position: absolute;
-  bottom: 16px;
+  bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
+  background: var(--gl);
+  border: 1px solid var(--bd);
+  backdrop-filter: var(--blur1);
+  -webkit-backdrop-filter: var(--blur1);
+  padding: 8px 16px;
+  border-radius: var(--rp);
+  box-shadow: var(--shd), 0 0 20px var(--A-g);
+  z-index: 15;
+  transition: border-color var(--t2), box-shadow var(--t2), background var(--t2);
+}
+.cs-dots:hover {
+  border-color: var(--bd-g);
+  box-shadow: var(--shd-l), 0 0 28px var(--A-g);
 }
 .cs-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--bd-g);
+  position: relative;
+  width: 8px;
+  height: 6px;
+  border-radius: var(--rp);
+  background: var(--p3);
+  opacity: 0.45;
   border: none;
   cursor: pointer;
-  transition: background 0.35s, transform 0.35s, width 0.35s;
   padding: 0;
+  transition: width 0.38s var(--ease-spring),
+              background 0.3s ease,
+              opacity 0.3s ease,
+              transform 0.25s ease,
+              box-shadow 0.35s ease;
+  outline: none;
+}
+/* Expanded touch hit area for mobile/touch accessibility */
+.cs-dot::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  bottom: -8px;
+  left: -5px;
+  right: -5px;
+}
+.cs-dot:hover:not(.active) {
+  opacity: 0.85;
+  background: var(--p2);
+  transform: scaleY(1.25);
 }
 .cs-dot.active {
-  background: var(--A-t);
-  transform: scale(1.5);
-  box-shadow: 0 0 8px var(--A-g);
+  width: 28px;
+  opacity: 1;
+  background: linear-gradient(90deg, var(--A), var(--A-t));
+  box-shadow: 0 0 12px var(--A-g), 0 0 4px rgba(255, 255, 255, 0.35);
+  transform: none;
 }
 /* Nav Buttons */
 .cs-btn {
