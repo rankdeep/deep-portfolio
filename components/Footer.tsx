@@ -1,3 +1,5 @@
+import Image from 'next/image'
+
 const NAV  = ['Home','Services','Work','About','Process']
 const SVCS = ['Custom Theme Development','WooCommerce Customisation','ACF Content Architecture','Custom Plugin Development','Performance Optimisation']
 
@@ -7,7 +9,18 @@ export function Footer() {
       <div className="pp-container">
         <div className="footer-inner">
           <div className="footer-brand">
-            <div className="site-logo">DR<span>.</span></div>
+            <div className="site-logo">
+              <span className="site-logo__avatar">
+                <Image
+                  src="/about-character.webp"
+                  alt="Deep Rank"
+                  width={38}
+                  height={38}
+                  className="site-logo__img"
+                />
+              </span>
+              <span className="site-logo__text">Deep Rank</span>
+            </div>
             <p>Software Engineer with 4+ years of experience building scalable production WordPress platforms with end-to-end ownership from requirements to deployment.</p>
             <div className="footer-socials">
               <a href="mailto:rankdeep@gmail.com">Email</a>

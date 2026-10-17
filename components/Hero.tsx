@@ -13,8 +13,8 @@ export function Hero() {
               Available for new projects
             </div>
             <h1 className="hero__title">
-              Software<br />Engineer<br />
-              <span className="hero__title-gradient">Deep Rank</span>
+              Software<br />
+              <span className="hero__title-gradient">Engineer</span>
             </h1>
             <p className="hero__desc">
               4+ years building scalable production WordPress platforms — custom themes, plugins,
@@ -42,7 +42,7 @@ export function Hero() {
             <div className="hero__glass-card glass-prism">
               <div style={{ display:'flex', alignItems:'center', gap:14, marginBottom:22 }}>
                 <div className="hero__card-avatar">
-                  <Image src="/3d-character.webp" alt="Deep Rank, software engineer" width={54} height={54} />
+                  <Image src="/about-character.webp" alt="Deep Rank, software engineer" width={54} height={54} />
                 </div>
                 <div>
                   <div className="hero__card-name">Deep Rank</div>
