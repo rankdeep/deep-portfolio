@@ -74,16 +74,6 @@ export const projects: Project[] = [
     type: 'wordpress',
   },
   {
-    img: '/The-Jordan-Insurance-Agency-home.webp',
-    alt: 'The Jordan Insurance Agency website homepage',
-    category: 'Webflow · Client Website',
-    title: 'The Jordan Insurance Agency',
-    excerpt: 'A client website for an insurance agency, designed to establish trust and make coverage options easy to explore.',
-    tags: ['Webflow', 'Client Website', 'Insurance'],
-    url: 'https://thejordaninsuranceagency.com/',
-    type: 'webflow',
-  },
-  {
     img: '/Bite-Buddy.webp',
     alt: 'BiteBuddy Webflow template homepage',
     category: 'Webflow · Template',
@@ -111,16 +101,6 @@ export const projects: Project[] = [
     excerpt: 'An IT consulting Webflow template created for technology teams focused on growth, security, and trust.',
     tags: ['Webflow', 'Template', 'IT Consulting'],
     url: 'https://novitrax-itconsulting.webflow.io/',
-    type: 'webflow',
-  },
-  {
-    img: '/BreakPoint-Systems.webp',
-    alt: 'Breakpoint Systems client website homepage',
-    category: 'Webflow · Client Website',
-    title: 'Breakpoint Systems',
-    excerpt: 'A client website for an AI-driven business systems company, built to communicate clarity, credibility, and scale.',
-    tags: ['Webflow', 'Client Website', 'Business'],
-    url: 'https://breakpointsystems.com/',
     type: 'webflow',
   },
 ]
